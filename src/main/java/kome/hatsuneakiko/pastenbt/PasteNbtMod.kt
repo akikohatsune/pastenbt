@@ -31,6 +31,14 @@ object PasteNbtMod {
         FORGE_BUS.addListener(::onRegisterClientCommands)
         FORGE_BUS.addListener(::onServerAboutToStart)
         FORGE_BUS.addListener(::onServerTick)
+
+        // Làm cho mod trở thành tùy chọn phía Client
+        net.minecraftforge.fml.ModLoadingContext.get().registerExtensionPoint(net.minecraftforge.fml.IExtensionPoint.DisplayTest::class.java) {
+            net.minecraftforge.fml.IExtensionPoint.DisplayTest(
+                { net.minecraftforge.network.NetworkConstants.IGNORESERVERONLY },
+                { _, _ -> true }
+            )
+        }
     }
 
     private fun setup(event: FMLCommonSetupEvent) {
@@ -46,6 +54,7 @@ object PasteNbtMod {
     private fun onRegisterCommands(event: RegisterCommandsEvent) {
         NbtPasterCommand.register(event.dispatcher)
         RtpCommand.register(event.dispatcher)
+        PasteCommand.register(event.dispatcher)
     }
 
     private fun onRegisterClientCommands(event: RegisterClientCommandsEvent) {
