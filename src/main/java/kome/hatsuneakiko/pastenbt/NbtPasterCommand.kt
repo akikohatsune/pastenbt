@@ -48,12 +48,12 @@ object NbtPasterCommand {
     private fun delete(context: CommandContext<CommandSourceStack>): Int {
         val pathStr = StringArgumentType.getString(context, "path")
         val source = context.source
-        val structuresDir = FMLPaths.CONFIGDIR.get().resolve("structures").toFile()
+        val structuresDir = FMLPaths.GAMEDIR.get().resolve("structures").toFile()
+        if (!structuresDir.exists()) structuresDir.mkdirs()
         
         val targetFile = File(structuresDir, pathStr).canonicalFile
         val nbtFile = File(structuresDir, "$pathStr.nbt").canonicalFile
 
-        // Bảo mật: Kiểm tra xem file có nằm trong thư mục structures không
         if (!targetFile.path.startsWith(structuresDir.canonicalPath) && !nbtFile.path.startsWith(structuresDir.canonicalPath)) {
             source.sendFailure(Component.literal("Access denied: Path is outside structures folder."))
             return 0
@@ -114,7 +114,7 @@ object NbtPasterCommand {
                     if (it.endsWith(".nbt")) it else "$it.nbt"
                 }
 
-                val targetDir = FMLPaths.CONFIGDIR.get().resolve("structures/downloads/${UUID.randomUUID()}").toFile()
+                val targetDir = FMLPaths.GAMEDIR.get().resolve("structures/downloads/${UUID.randomUUID()}").toFile()
                 targetDir.mkdirs()
                 val targetFile = File(targetDir, fileName)
 

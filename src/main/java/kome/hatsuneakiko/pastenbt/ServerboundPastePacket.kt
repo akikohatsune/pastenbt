@@ -39,7 +39,7 @@ class ServerboundPastePacket(
 
             Thread {
                 try {
-                    val nbtFile = FMLPaths.CONFIGDIR.get().resolve("structures/${msg.name}.nbt").toFile()
+                    val nbtFile = FMLPaths.GAMEDIR.get().resolve("structures/${msg.name}.nbt").toFile()
                     if (!nbtFile.exists()) {
                         player.sendSystemMessage(Component.literal("File not found: ${msg.name}"))
                         return@Thread
