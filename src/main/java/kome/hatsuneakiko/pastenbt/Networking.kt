@@ -6,6 +6,7 @@ import net.minecraftforge.network.simple.SimpleChannel
 
 object Networking {
     private const val PROTOCOL_VERSION = "1"
+    
     val INSTANCE: SimpleChannel = NetworkRegistry.newSimpleChannel(
         ResourceLocation(PasteNbtMod.MODID, "main"),
         { PROTOCOL_VERSION },
