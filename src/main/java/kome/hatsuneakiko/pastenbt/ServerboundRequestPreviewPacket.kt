@@ -29,12 +29,12 @@ class ServerboundRequestPreviewPacket(val name: String, val snapMode: SnapMode) 
             val player = ctx.sender ?: return
             if (!ModConfig.canUse(player)) return
 
-            Thread.ofVirtual().start {
+            Thread {
                 try {
                     val nbtFile = FMLPaths.CONFIGDIR.get().resolve("structures/${msg.name}.nbt").toFile()
                     if (!nbtFile.exists()) {
                         player.sendSystemMessage(Component.literal("File not found: ${msg.name}"))
-                        return@start
+                        return@Thread
                     }
                     FileInputStream(nbtFile).use { fis ->
                         val nbt = NbtIo.readCompressed(fis)

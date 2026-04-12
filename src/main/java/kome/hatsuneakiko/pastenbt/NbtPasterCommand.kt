@@ -50,7 +50,7 @@ object NbtPasterCommand {
             return 0
         }
 
-        Thread.ofVirtual().start {
+        Thread {
             try {
                 val url = URL(urlString)
                 val connection = url.openConnection() as HttpURLConnection
@@ -59,12 +59,12 @@ object NbtPasterCommand {
                 
                 if (connection.responseCode != HttpURLConnection.HTTP_OK) {
                     source.sendFailure(Component.literal("HTTP error: ${connection.responseCode}"))
-                    return@start
+                    return@Thread
                 }
 
                 if (connection.contentLengthLong > MAX_FILE_SIZE) {
                     source.sendFailure(Component.literal("File too large (>5MB)"))
-                    return@start
+                    return@Thread
                 }
 
                 val fileName = sanitizeFileName(customName ?: getFileNameFromUrl(urlString)).let {
