@@ -38,7 +38,50 @@ object NbtPasterCommand {
                         .executes { download(it, StringArgumentType.getString(it, "name")) })
                 )
             )
+            .then(Commands.literal("delete")
+                .then(Commands.argument("path", StringArgumentType.string())
+                    .executes { delete(it) })
+            )
         )
+    }
+
+    private fun delete(context: CommandContext<CommandSourceStack>): Int {
+        val pathStr = StringArgumentType.getString(context, "path")
+        val source = context.source
+        val structuresDir = FMLPaths.CONFIGDIR.get().resolve("structures").toFile()
+        
+        val targetFile = File(structuresDir, pathStr).canonicalFile
+        val nbtFile = File(structuresDir, "$pathStr.nbt").canonicalFile
+
+        // Bảo mật: Kiểm tra xem file có nằm trong thư mục structures không
+        if (!targetFile.path.startsWith(structuresDir.canonicalPath) && !nbtFile.path.startsWith(structuresDir.canonicalPath)) {
+            source.sendFailure(Component.literal("Access denied: Path is outside structures folder."))
+            return 0
+        }
+
+        val fileToDelete = when {
+            targetFile.exists() -> targetFile
+            nbtFile.exists() -> nbtFile
+            else -> null
+        }
+
+        if (fileToDelete == null) {
+            source.sendFailure(Component.literal("File or folder not found: $pathStr"))
+            return 0
+        }
+
+        return try {
+            if (fileToDelete.deleteRecursively()) {
+                source.sendSuccess({ Component.literal("§aDeleted:§r ${fileToDelete.name}") }, true)
+                1
+            } else {
+                source.sendFailure(Component.literal("Failed to delete: $pathStr"))
+                0
+            }
+        } catch (e: Exception) {
+            source.sendFailure(Component.literal("Error: ${e.message}"))
+            0
+        }
     }
 
     private fun download(context: CommandContext<CommandSourceStack>, customName: String?): Int {
