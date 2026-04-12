@@ -37,8 +37,7 @@ minecraft {
 
 repositories {
     maven {
-        url = 'https://maven.thedarkcolour.com'
-        allowInsecureProtocol = true
+        url = 'https://thedarkcolour.github.io/KotlinForForge/'
     }
     mavenCentral()
 }

@@ -81,11 +81,11 @@ object NbtPasterCommand {
                     }
                 }
 
-                source.sendSuccess({ Component.literal("§a[Java 21 Virtual Thread]§r Saved to downloads/${targetDir.name}/$fileName") }, true)
+                source.sendSuccess({ Component.literal("§a[Java 17 Async]§r Saved to downloads/${targetDir.name}/$fileName") }, true)
             } catch (e: Exception) {
                 source.sendFailure(Component.literal("Download failed: ${e.message}"))
             }
-        }
+        }.start()
 
         source.sendSuccess({ Component.literal("Starting download...") }, false)
         return 1

@@ -56,13 +56,13 @@ class ServerboundPastePacket(
 
                         ctx.enqueueWork {
                             PlacementManager.add(PlacementManager.PlacementTask(player.uuid, player.serverLevel(), blocks))
-                            player.sendSystemMessage(Component.literal("§b[Kotlin Coroutine]§r Prepared: ${msg.name}"))
+                            player.sendSystemMessage(Component.literal("§b[Java 17 Async]§r Prepared: ${msg.name}"))
                         }
                     }
                 } catch (e: Exception) {
                     player.sendSystemMessage(Component.literal("Error: ${e.message}"))
                 }
-            }
+            }.start()
             ctx.packetHandled = true
         }
     }
