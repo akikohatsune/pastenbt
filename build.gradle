@@ -36,7 +36,10 @@ minecraft {
 }
 
 repositories {
-    maven { url = 'https://maven.thedarkcolour.com' } // Kotlin for Forge
+    maven {
+        url = 'https://maven.thedarkcolour.com'
+        allowInsecureProtocol = true
+    }
     mavenCentral()
 }
 
