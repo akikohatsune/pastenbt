@@ -87,8 +87,8 @@ public class PreviewHandler {
     public static void onClientTick(TickEvent.ClientTickEvent event) {
         if (event.phase != TickEvent.Phase.END || !isPreviewing) return;
         
-        while (PasteNbtMod.ROTATE_KEY.consumeClick()) rotate();
-        while (PasteNbtMod.CONFIRM_KEY.consumeClick()) confirm();
-        while (PasteNbtMod.CANCEL_KEY.consumeClick()) cancel();
+        while (ClientSetup.ROTATE_KEY.consumeClick()) rotate();
+        while (ClientSetup.CONFIRM_KEY.consumeClick()) confirm();
+        while (ClientSetup.CANCEL_KEY.consumeClick()) cancel();
     }
 }
