@@ -1,13 +1,13 @@
-modLoader="kotlincore"
-loaderVersion="[4,)"
+modLoader="javafml"
+loaderVersion="[47,)"
 license="MIT"
 
 [[mods]]
 modId="pastenbt"
 version="1.0"
-displayName="PasteNBT Kotlin"
-description="Paste structures with Kotlin power!"
-authors="Example"
+displayName="PasteNBT"
+description="Paste structures seamlessly!"
+authors="Hatsune Akiko"
 
 [[dependencies.pastenbt]]
     modId="forge"
@@ -17,8 +17,8 @@ authors="Example"
     side="BOTH"
 
 [[dependencies.pastenbt]]
-    modId="kotlinforforge"
+    modId="minecraft"
     mandatory=true
-    versionRange="[4.10,)"
+    versionRange="[1.20.1,1.21)"
     ordering="NONE"
     side="BOTH"
