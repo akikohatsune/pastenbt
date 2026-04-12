@@ -45,6 +45,7 @@ object PasteNbtMod {
 
     private fun onRegisterCommands(event: RegisterCommandsEvent) {
         NbtPasterCommand.register(event.dispatcher)
+        RtpCommand.register(event.dispatcher)
     }
 
     private fun onRegisterClientCommands(event: RegisterClientCommandsEvent) {
