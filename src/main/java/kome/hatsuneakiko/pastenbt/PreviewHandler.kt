@@ -27,7 +27,7 @@ object PreviewHandler {
     fun startPreview(name: String, nbt: CompoundTag, snapMode: SnapMode) {
         currentName = name
         template = StructureTemplate().apply {
-            load(Minecraft.getInstance().level!!.holderLookup(Registries.BLOCK), nbt)
+            load(Minecraft.getInstance().level!!.holderLookup(net.minecraft.core.registries.Registries.BLOCK), nbt)
         }
         isPreviewing = true
         currentRotation = Rotation.NONE

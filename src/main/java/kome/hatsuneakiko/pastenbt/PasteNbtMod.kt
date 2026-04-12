@@ -56,8 +56,8 @@ object PasteNbtMod {
         ModConfig.load()
     }
 
-    private fun onServerTick(event: TickEvent.ServerTickEvent) {
-        if (event.phase == TickEvent.Phase.END) {
+    private fun onServerTick(_event: TickEvent.ServerTickEvent) {
+        if (_event.phase == TickEvent.Phase.END) {
             PlacementManager.processTick()
         }
     }

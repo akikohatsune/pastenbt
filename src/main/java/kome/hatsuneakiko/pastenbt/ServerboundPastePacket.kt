@@ -48,7 +48,7 @@ class ServerboundPastePacket(
                     FileInputStream(nbtFile).use { fis ->
                         val nbt = NbtIo.readCompressed(fis)
                         val template = StructureTemplate()
-                        template.load(player.serverLevel().holderLookup(Registries.BLOCK), nbt)
+                        template.load(player.serverLevel().holderLookup(net.minecraft.core.registries.Registries.BLOCK), nbt)
 
                         val origin = msg.snapMode.snap(player.blockPosition())
                         val settings = StructurePlaceSettings().setRotation(msg.rotation)

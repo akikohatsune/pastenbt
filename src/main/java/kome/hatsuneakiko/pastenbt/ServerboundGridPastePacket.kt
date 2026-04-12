@@ -43,7 +43,7 @@ class ServerboundGridPastePacket(val name: String, val radius: Int, val snapMode
                     FileInputStream(nbtFile).use { fis ->
                         val nbt = NbtIo.readCompressed(fis)
                         val template = StructureTemplate()
-                        template.load(player.serverLevel().holderLookup(Registries.BLOCK), nbt)
+                        template.load(player.serverLevel().holderLookup(net.minecraft.core.registries.Registries.BLOCK), nbt)
 
                         val playerChunkX = player.blockPosition().x shr 4
                         val playerChunkZ = player.blockPosition().z shr 4
