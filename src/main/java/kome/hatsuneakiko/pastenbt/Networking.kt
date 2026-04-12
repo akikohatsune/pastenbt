@@ -10,8 +10,8 @@ object Networking {
     val INSTANCE: SimpleChannel = NetworkRegistry.newSimpleChannel(
         ResourceLocation(PasteNbtMod.MODID, "main"),
         { PROTOCOL_VERSION },
-        { version -> version == PROTOCOL_VERSION || version == NetworkRegistry.ABSENT },
-        { version -> version == PROTOCOL_VERSION || version == NetworkRegistry.ABSENT }
+        { version: String -> version == PROTOCOL_VERSION || version == NetworkRegistry.ABSENT },
+        { version: String -> version == PROTOCOL_VERSION || version == NetworkRegistry.ABSENT }
     )
 
     fun register() {
