@@ -1,0 +1,24 @@
+modLoader="kotlincore"
+loaderVersion="[4,)"
+license="MIT"
+
+[[mods]]
+modId="pastenbt"
+version="1.0"
+displayName="PasteNBT Kotlin"
+description="Paste structures with Kotlin power!"
+authors="Example"
+
+[[dependencies.pastenbt]]
+    modId="forge"
+    mandatory=true
+    versionRange="[47,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.pastenbt]]
+    modId="kotlinforforge"
+    mandatory=true
+    versionRange="[4.10,)"
+    ordering="NONE"
+    side="BOTH"
