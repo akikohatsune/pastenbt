@@ -2,9 +2,9 @@ name: Build Forge Mod (Java 21)
 
 on:
   push:
-    branches: [ "main", "master" ]
+    branches: [ "main", "java17" ]
   pull_request:
-    branches: [ "main", "master" ]
+    branches: [ "main", "java17" ]
 
 jobs:
   build:
