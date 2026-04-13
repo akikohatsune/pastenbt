@@ -59,7 +59,7 @@ public class PlacementManager {
                     
                     BlockState currentState = level.getBlockState(info.pos());
                     if (currentState != info.state()) {
-                        level.setBlock(info.pos(), info.state(), 2 | 16);
+                        level.setBlock(info.pos(), info.state(), 3);
                         if (info.nbt() != null) {
                             BlockEntity be = level.getBlockEntity(info.pos());
                             if (be != null) be.load(info.nbt());
