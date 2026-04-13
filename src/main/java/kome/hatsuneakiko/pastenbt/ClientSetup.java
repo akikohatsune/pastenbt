@@ -1,7 +1,6 @@
 package kome.hatsuneakiko.pastenbt;
 
 import net.minecraft.client.KeyMapping;
-import net.minecraftforge.client.event.RegisterClientCommandsEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -14,16 +13,11 @@ public class ClientSetup {
 
     public static void init() {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ClientSetup::registerKeys);
-        MinecraftForge.EVENT_BUS.addListener(ClientSetup::onRegisterClientCommands);
     }
 
     private static void registerKeys(final RegisterKeyMappingsEvent event) {
         event.register(ROTATE_KEY);
         event.register(CONFIRM_KEY);
         event.register(CANCEL_KEY);
-    }
-
-    private static void onRegisterClientCommands(final RegisterClientCommandsEvent event) {
-        PasteCommand.register(event.getDispatcher());
     }
 }
