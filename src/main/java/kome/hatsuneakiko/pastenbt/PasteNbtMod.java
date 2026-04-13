@@ -49,6 +49,13 @@ public class PasteNbtMod {
 
     private void onServerAboutToStart(final ServerAboutToStartEvent event) {
         ModConfig.load();
+        
+        // Tự động tạo thư mục structures ở thư mục gốc của server
+        java.io.File structuresDir = net.minecraftforge.fml.loading.FMLPaths.GAMEDIR.get().resolve("structures").toFile();
+        if (!structuresDir.exists()) {
+            structuresDir.mkdirs();
+            LOGGER.info("Created /structures directory for PasteNBT mod.");
+        }
     }
 
     private void onServerTick(final TickEvent.ServerTickEvent event) {
