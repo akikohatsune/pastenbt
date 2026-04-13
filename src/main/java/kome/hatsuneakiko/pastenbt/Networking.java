@@ -17,8 +17,6 @@ public class Networking {
     public static void register() {
         int id = 0;
         INSTANCE.registerMessage(id++, ServerboundPastePacket.class, ServerboundPastePacket::encode, ServerboundPastePacket::decode, ServerboundPastePacket::handle);
-        INSTANCE.registerMessage(id++, ServerboundRequestPreviewPacket.class, ServerboundRequestPreviewPacket::encode, ServerboundRequestPreviewPacket::decode, ServerboundRequestPreviewPacket::handle);
         INSTANCE.registerMessage(id++, ClientboundPreviewDataPacket.class, ClientboundPreviewDataPacket::encode, ClientboundPreviewDataPacket::decode, ClientboundPreviewDataPacket::handle);
-        INSTANCE.registerMessage(id++, ServerboundGridPastePacket.class, ServerboundGridPastePacket::encode, ServerboundGridPastePacket::decode, ServerboundGridPastePacket::handle);
     }
 }
